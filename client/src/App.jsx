@@ -1,10 +1,8 @@
-import './App.css'
-
 function App() {
 
   return (
     <div>
-      works
+      <h1 className="text-5xl">dsa</h1>
     </div>
   )
 }
