@@ -1,8 +1,10 @@
+import Navbar from "./components/Navbar/Navbar"
+
 function App() {
 
   return (
-    <div>
-      <h1 className="text-5xl">dsa</h1>
+    <div className="py-3 px-4">
+      <Navbar />
     </div>
   )
 }
