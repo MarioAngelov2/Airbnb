@@ -1,13 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import Account from "./components/Account/Account";
 import Navbar from "./components/Navbar/Navbar";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
 
 function App() {
     return (
         <div className="py-3 px-4">
-                <Navbar />
+            <Navbar />
             <Routes>
                 <Route path="/account" element={<Account />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </div>
     );
