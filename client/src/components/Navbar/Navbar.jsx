@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { PiPaperPlane } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -23,10 +24,10 @@ function Navbar() {
                 </div>
             </div>
             {/* third section */}
-            <div className="flex gap-3 border rounded-3xl py-2 px-5 shadow-md shadow-gray-100">
+            <Link to={'/login'} className="flex gap-3 border rounded-3xl py-2 px-5 shadow-md shadow-gray-100">
                 <RxHamburgerMenu size={24} />
                 <FaRegUserCircle size={24} />
-            </div>
+            </Link>
         </div>
     );
 }
