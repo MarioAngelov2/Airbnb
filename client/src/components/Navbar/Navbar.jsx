@@ -19,12 +19,12 @@ function Navbar() {
                 <div>Any week</div>
                 <div className="border-l border-gray-300">&nbsp;</div>
                 <div>Add Guests</div>
-                <div className="border rounded-3xl p-2 bg-primary text-white">
-                    <BiSearchAlt2 size={18} />
-                </div>
+                <a href="/search" className="border rounded-3xl p-2 bg-primary text-white">
+                    <BiSearchAlt2 size={18} aria-label="Search Icon"/>
+                </a>
             </div>
             {/* third section */}
-            <Link to={'/login'} className="flex gap-3 border rounded-3xl py-2 px-5 shadow-md shadow-gray-100">
+            <Link to={'/login'} aria-label="User Icon" className="flex gap-3 border rounded-3xl py-2 px-5 shadow-md shadow-gray-100">
                 <RxHamburgerMenu size={24} />
                 <FaRegUserCircle size={24} />
             </Link>
