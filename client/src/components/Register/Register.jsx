@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import * as api from "../../api/requester";
 
@@ -6,12 +7,14 @@ function Register() {
     const [name, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
 
         const data = { name, email, password };
         await api.register(data);
+        navigate('/')
     };
 
     return (
