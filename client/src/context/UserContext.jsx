@@ -14,7 +14,9 @@ export function UserContextProvider({ children }) {
     }
 
     useEffect(() => {
-        getUserCredentials();
+        if (!user) {
+            getUserCredentials();
+        }
     }, []);
 
     return (
@@ -24,4 +26,4 @@ export function UserContextProvider({ children }) {
     );
 }
 
-export default UserContextProvider
+export default UserContextProvider;
