@@ -54,6 +54,16 @@ export async function getUser() {
     }
 }
 
+    export async function logout() {
+        try {
+            await fetch(`${URL}/logout`, {
+                credentials: "include"
+            })
+        } catch (error) {
+            
+        }
+    }
+
 // axios
 
 // export async function register(data) {
