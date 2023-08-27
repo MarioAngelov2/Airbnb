@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as api from "../../api/requester";
 import { UserContext } from "../../context/userContext";
 
@@ -7,12 +7,14 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { setUser } = useContext(UserContext);
+    const navigate = useNavigate()
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
 
         const data = { email, password };
         await api.login(data);
+        navigate('/account')
         setUser(data);
     };
 
