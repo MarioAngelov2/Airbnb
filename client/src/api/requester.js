@@ -16,10 +16,16 @@ export async function register(data) {
     }
 }
 
-export async function login() {
+export async function login(data) {
     try {
-        const response = await fetch(`${URL}/login`);
-        return response.json();
+        const response = await fetch(`${URL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        return response;
     } catch (error) {
         console.log(error);
     }
