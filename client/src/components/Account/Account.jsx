@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import AccountNav from "./AccountNav";
 import { UserContext } from "../../context/userContext";
 import ClipLoader from "react-spinners/ClipLoader";
+import * as api from '../../api/requester'
 
 function Account() {
-    const { user, ready } = useContext(UserContext);
+    const { user, ready, setUser } = useContext(UserContext);
     const navigate = useNavigate();
 
     if (!ready) {
@@ -21,13 +22,20 @@ function Account() {
         return navigate("/login");
     }
 
+    const onLogout = async () => {
+        console.log("onLogout function called");
+        await api.logout();
+        setUser(null);
+        navigate('/')
+    }
+
     return (
         <div>
             <AccountNav />
             <div className="flex flex-col items-center justify-center mt-16">
                 <h1 className="text-3xl mb-1">Welcome {user.name}</h1>
                 <p>{user.email}</p>
-                <button className="primary max-w-md mt-4">Logout</button>
+                <button onClick={onLogout} className="primary max-w-md mt-4">Logout</button>
             </div>
         </div>
     );
