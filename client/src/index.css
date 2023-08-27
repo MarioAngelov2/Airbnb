@@ -12,5 +12,11 @@ input[type="email"] {
 
 button.primary {
     background-color: #fe395c;
-    @apply bg-primary p-2 w-full text-white rounded-2xl;
+    @apply bg-primary p-2 w-full text-white rounded-2xl ease-out duration-300;
+}
+
+button.primary:hover {
+    transition: ease-in-out 0.3s;
+    background-color: #e93455;
+
 }

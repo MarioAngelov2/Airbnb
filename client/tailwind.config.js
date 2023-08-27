@@ -9,6 +9,7 @@ export default {
             maxWidth: {
                 global: "1440px",
             },
+            
         },
     },
     plugins: [],
