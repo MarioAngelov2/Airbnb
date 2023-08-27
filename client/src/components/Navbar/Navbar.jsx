@@ -7,7 +7,7 @@ import { BiSearchAlt2 } from "react-icons/bi";
 
 function Navbar() {
     return (
-        <div className="flex justify-between max-w-global mx-auto">
+        <Link to={'/'} className="flex justify-between max-w-global mx-auto">
             <div className="flex items-center gap-1">
                 <PiPaperPlane className="text-primary" size={30} />
                 <h1 className="text-2xl font-bold text-primary">airbnb</h1>
@@ -24,11 +24,11 @@ function Navbar() {
                 </a>
             </div>
             {/* third section */}
-            <Link to={'/login'} aria-label="User Icon" className="flex gap-3 border rounded-3xl py-2 px-5 shadow-md shadow-gray-100">
+            <Link to={'/account'} aria-label="User" className="flex gap-3 border rounded-3xl py-2 px-5 shadow-md shadow-gray-100">
                 <RxHamburgerMenu size={24} />
                 <FaRegUserCircle size={24} />
             </Link>
-        </div>
+        </Link>
     );
 }
 

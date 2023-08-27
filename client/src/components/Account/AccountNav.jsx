@@ -6,17 +6,14 @@ import { PiBuildings } from "react-icons/pi";
 
 function AccountNav() {
     const { pathname } = useLocation();
-    console.log(useLocation())
     let subpage = pathname.split('/')?.[2]
     
-    if (subpage === 'undefined') {
+    if (subpage === undefined) {
         subpage = 'profile'
     }
 
-    console.log(subpage)
-
     function linkClasses(type = null) {
-        let classes = "flex items-center gap-1"
+        let classes = "flex justify-center md:flex md:flex-row items-center gap-1 py-3 px-4"
         if (type === subpage) {
             classes += " bg-primary text-white rounded-full"
         }
@@ -25,28 +22,28 @@ function AccountNav() {
     }
   
     return (
-        <div className="flex justify-center max-w-global mx-auto my-16 mb-8 gap-5">
-            <NavLink
+        <div className="flex flex-col gap-3 max-w-xs md:flex md:flex-row justify-center md:max-w-global mx-auto my-16 mb-8 md:gap-4 py-2">
+            <Link
                 className={linkClasses('profile')}
                 to={"/account"}
             >
                 <CgProfile size={20} />
                 My profile
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
                 className={linkClasses('bookings')}
-                to={"/account/bookings"}
+                to={""}
             >
                 <FaRegBookmark size={20} />
                 My bookings
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
                 className={linkClasses('places')}
                 to={"/account/places"}
             >
                 <PiBuildings size={20} />
                 My accoommodations
-            </NavLink>
+            </Link>
         </div>
     );
 }
