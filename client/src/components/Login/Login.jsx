@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import * as api from "../../api/requester";
+import { UserContext } from "../../context/userContext";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { setUser } = useContext(UserContext);
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
 
         const data = { email, password };
         await api.login(data);
+        setUser(data);
     };
 
     return (
@@ -28,9 +31,12 @@ function Login() {
                         value={email}
                         onChange={(ev) => setEmail(ev.target.value)}
                     />
-                    <input type="password" placeholder="password" 
-                      value={password}
-                      onChange={(ev) => setPassword(ev.target.value)}/>
+                    <input
+                        type="password"
+                        placeholder="password"
+                        value={password}
+                        onChange={(ev) => setPassword(ev.target.value)}
+                    />
                     <button className="primary mt-5">Login</button>
                 </form>
                 <div className="text-center mt-4">
