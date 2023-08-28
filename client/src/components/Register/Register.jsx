@@ -43,9 +43,9 @@ function Register() {
                     <button className="primary mt-5">Register</button>
                 </form>
                 <div className="text-center mt-4">
-                    Don't have an account?{" "}
+                    Already have an account?{" "}
                     <Link className="font-semibold underline" to={"/login"}>
-                        Register
+                        Login
                     </Link>
                 </div>
             </div>
