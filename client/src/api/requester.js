@@ -54,15 +54,29 @@ export async function getUser() {
     }
 }
 
-    export async function logout() {
-        try {
-            await fetch(`${URL}/logout`, {
-                credentials: "include"
-            })
-        } catch (error) {
-            
-        }
+export async function logout() {
+    try {
+        await fetch(`${URL}/logout`, {
+            credentials: "include",
+        });
+    } catch (error) {}
+}
+
+export async function uploadPhotoFromLink(data) {
+    try {
+        const response = await fetch("http://127.0.0.1:5001/upload-by-link", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ link: data }),
+        });
+
+        return response.json();
+    } catch (error) {
+        console.log(error);
     }
+}
 
 // axios
 
