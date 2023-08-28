@@ -42,9 +42,9 @@ function Login() {
                     <button className="primary mt-5">Login</button>
                 </form>
                 <div className="text-center mt-4">
-                    Already have an account?{" "}
-                    <Link className="font-semibold underline" to={"/login"}>
-                        Login
+                    Dont have an account?{" "}
+                    <Link className="font-semibold underline" to={"/register"}>
+                        Register
                     </Link>
                 </div>
             </div>
