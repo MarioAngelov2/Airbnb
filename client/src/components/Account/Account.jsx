@@ -35,7 +35,7 @@ function Account() {
             <div className="flex flex-col items-center justify-center mt-16">
                 <h1 className="text-3xl mb-1">Welcome {user.name}</h1>
                 <p>{user.email}</p>
-                <button onClick={onLogout} className="primary max-w-md mt-4">Logout</button>
+                <button onClick={onLogout} className="primary max-w-xs md:max-w-md mt-4">Logout</button>
             </div>
         </div>
     );
