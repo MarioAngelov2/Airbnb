@@ -1,12 +1,31 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import * as api from "../../api/requester";
 
-function UploadPhotos() {
+function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
+    const [uploadPhotoByLink, setUploadPhotoByLink] = useState("");
+
+    async function uploadFromLink(ev) {
+        ev.preventDefault();
+
+        const response = await api.uploadPhotoFromLink(uploadPhotoByLink);
+        setUploadPhotos((prev) => [...prev, response]);
+    }
+
     return (
         <>
             <div className="flex gap-4">
-                <input type="text" placeholder="Paste URL here..." />
-                <button className="border rounded-2xl px-4 grow">
+                <input
+                    type="text"
+                    placeholder="Paste URL here..."
+                    value={uploadPhotoByLink}
+                    onChange={(ev) => setUploadPhotoByLink(ev.target.value)}
+                />
+                <button
+                    onClick={uploadFromLink}
+                    className="border rounded-2xl px-4 grow"
+                >
                     Add&nbsp;photo
                 </button>
             </div>
