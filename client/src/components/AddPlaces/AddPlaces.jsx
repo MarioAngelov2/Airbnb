@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import AccountNav from "../Account/AccountNav";
 import UploadPhotos from "./UploadPhotos";
 import Perks from "./Perks";
 
 function AddPlaces() {
+    const [title, setTitle] = useState("");
+    const [address, setAddress] = useState("");
+    const [uploadPhotos, setUploadPhotos] = useState([]);
+    const [description, setDescription] = useState("");
+    const [perks, setPerks] = useState("");
+    const [extraInfo, setExtraInfo] = useState("");
+    const [checkIn, setCheckIn] = useState("");
+    const [checkOut, setCheckout] = useState("");
+    const [guests, setGuests] = useState("");
+    const [price, setPrice] = useState("");
+
     const inputHeader = (text) => (
         <h2 className="text-2xl font-semibold mt-8">{text}</h2>
     );
@@ -31,25 +42,42 @@ function AddPlaces() {
                     <input
                         type="text"
                         placeholder="Title, for example: My awesome place..."
+                        value={title}
+                        onChange={(ev) => setTitle(ev.target.value)}
                     />
                     {preInput("Address", "Address to this place")}
                     <input
                         type="text"
                         placeholder="Add address of the place..."
+                        value={address}
+                        onChange={(ev) => setAddress(ev.target.value)}
                     />
                     {preInput("Upload photo by link", "Paste photo URL")}
-                    <UploadPhotos />
+                    <UploadPhotos
+                        uploadPhotos={uploadPhotos}
+                        setUploadPhotos={setUploadPhotos}
+                    />
                     {preInput(
                         "Description",
                         "Add description to your place..."
                     )}
-                    <textarea type="text" placeholder="Add description..." />
+                    <textarea
+                        type="text"
+                        placeholder="Add description..."
+                        value={description}
+                        onChange={(ev) => setDescription(ev.target.value)}
+                    />
                     {preInput("Perks", "Add perks that belong to your place")}
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-2">
-                        <Perks />
+                        <Perks perks={perks} setPerks={setPerks} />
                     </div>
                     {preInput("Extra Info", "Add extra info for your place")}
-                    <textarea type="text" placeholder="Add extra info..." />
+                    <textarea
+                        type="text"
+                        placeholder="Add extra info..."
+                        value={extraInfo}
+                        onChange={(ev) => setExtraInfo(ev.target.value)}
+                    />
                     {preInput("Chek In & Check Out", "Add your dates here")}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         <div className="mt-2">
@@ -58,6 +86,8 @@ function AddPlaces() {
                                 type="text"
                                 placeholder="13:00"
                                 className="border"
+                                value={checkIn}
+                                onChange={(ev) => setCheckIn(ev.target.value)}
                             />
                         </div>
                         <div className="mt-2">
@@ -66,6 +96,8 @@ function AddPlaces() {
                                 type="text"
                                 placeholder="10:00"
                                 className="border"
+                                value={checkOut}
+                                onChange={(ev) => setCheckout(ev.target.value)}
                             />
                         </div>
                         <div className="mt-2">
@@ -74,6 +106,8 @@ function AddPlaces() {
                                 type="text"
                                 placeholder="5"
                                 className="border"
+                                value={guests}
+                                onChange={(ev) => setGuests(ev.target.value)}
                             />
                         </div>
                         <div className="mt-2">
@@ -82,10 +116,15 @@ function AddPlaces() {
                                 type="text"
                                 placeholder="$220"
                                 className="border"
+                                value={price}
+                                onChange={(ev) => setPrice(ev.target.value)}
                             />
                         </div>
-
-                        
+                    </div>
+                    <div className="flex items-center justify-center">
+                        <button className="max-w-md primary mt-10 mb-4">
+                            Add place
+                        </button>
                     </div>
                 </form>
             </div>
