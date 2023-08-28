@@ -78,6 +78,19 @@ export async function uploadPhotoFromLink(data) {
     }
 }
 
+export async function uploadPhotoFromDevice(data) {
+    try {
+        const response = await fetch(`${URL}/upload`, {
+            method: "POST",
+            body: data
+        })
+
+        return response.json();
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 // axios
 
 // export async function register(data) {
