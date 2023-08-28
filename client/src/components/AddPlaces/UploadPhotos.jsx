@@ -13,6 +13,24 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
         setUploadPhotos((prev) => [...prev, response]);
     }
 
+    async function uploadFromDevice(ev) {
+        const files = ev.target.files;
+        const data = new FormData();
+
+        for (let i = 0; i < files.length; i++) {
+            data.append("photos", files[i]);
+        }
+        try {
+            const response = await api.uploadPhotoFromDevice(data);
+
+            setUploadPhotos((prev) => {
+                return [...prev, ...response];
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <div className="flex gap-4">
@@ -32,7 +50,12 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
             <label className="flex h-32 mt-2 max-w-xs items-center justify-center cursor-pointer gap-1 border bg-transparent rounded-2xl text-gray-500">
                 <AiOutlineCloudUpload size={38} />
                 Upload from device
-                <input type="file" multiple hidden />
+                <input
+                    onChange={uploadFromDevice}
+                    type="file"
+                    multiple
+                    hidden
+                />
             </label>
         </>
     );
