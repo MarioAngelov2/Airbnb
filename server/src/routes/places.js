@@ -8,6 +8,8 @@ const logout = require("../controllers/logout");
 const uploadByLink = require("../controllers/UploadPhotos/UploadByLink");
 const uploadPhotoFromDevice = require("../controllers/UploadPhotos/UploadFromDevice");
 const createPlace = require("../controllers/Places/createPlace");
+const userPlaces = require("../controllers/Places/userPlaces");
+const place = require("../controllers/Places/place");
 
 const parentDirectory = path.resolve(__dirname, "..");
 const PATH_TO_UPLOADS = path.join(
@@ -30,5 +32,7 @@ router.post(
     uploadPhotoFromDevice
 );
 router.post("/add-place", createPlace);
+router.get("/user-places", userPlaces);
+router.get("/place/:id", place);
 
 module.exports = router;
