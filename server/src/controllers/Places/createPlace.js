@@ -19,10 +19,11 @@ const createPlace = async (req, res) => {
     } = req.body;
 
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decodedToken.id
 
-    if (decodedToken) {
+    if (userId) {
         const newPlace = await Place.create({
-            userOwner: token._id,
+            owner: userId,
             title,
             address,
             photos: uploadPhotos,
