@@ -12,7 +12,7 @@ function AddPlaces() {
     const [extraInfo, setExtraInfo] = useState("");
     const [checkIn, setCheckIn] = useState("");
     const [checkOut, setCheckout] = useState("");
-    const [guests, setGuests] = useState("");
+    const [maxGuests, setMaxGuests] = useState("");
     const [price, setPrice] = useState("");
 
     const inputHeader = (text) => (
@@ -29,6 +29,39 @@ function AddPlaces() {
             {inputDescription(description)}
         </>
     );
+
+    const data = {
+        title,
+        address,
+        uploadPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests,
+        price,
+    };
+
+    async function addPlace(ev) {
+        ev.preventDefault();
+    
+        try {
+            const response = await fetch('http://127.0.0.1:5001/add-place', {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({...data})
+            });
+
+            return response.json();
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div>
@@ -106,8 +139,8 @@ function AddPlaces() {
                                 type="text"
                                 placeholder="5"
                                 className="border"
-                                value={guests}
-                                onChange={(ev) => setGuests(ev.target.value)}
+                                value={maxGuests}
+                                onChange={(ev) => setMaxGuests(ev.target.value)}
                             />
                         </div>
                         <div className="mt-2">
@@ -122,7 +155,7 @@ function AddPlaces() {
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
-                        <button className="max-w-md primary mt-10 mb-4">
+                        <button onClick={addPlace} className="max-w-md primary mt-10 mb-4">
                             Add place
                         </button>
                     </div>
