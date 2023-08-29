@@ -11,6 +11,7 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
 
         const response = await api.uploadPhotoFromLink(uploadPhotoByLink);
         setUploadPhotos((prev) => [...prev, response]);
+        setUploadPhotoByLink("");
     }
 
     async function uploadFromDevice(ev) {
@@ -26,6 +27,7 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
             setUploadPhotos((prev) => {
                 return [...prev, ...response];
             });
+            setUploadPhotos("");
         } catch (error) {
             console.log(error);
         }
