@@ -53,6 +53,7 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
                 {uploadPhotos.length > 0 &&
                     uploadPhotos.map((photo) => (
                         <img
+                            key={photo}
                             className="rounded-2xl aspect-square object-cover"
                             src={"http://localhost:5001/uploads/" + photo}
                             alt=""
