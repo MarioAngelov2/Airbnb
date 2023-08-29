@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as api from "../../api/requester";
 import AccountNav from "../Account/AccountNav";
 import UploadPhotos from "./UploadPhotos";
 import Perks from "./Perks";
@@ -45,19 +46,10 @@ function AddPlaces() {
 
     async function addPlace(ev) {
         ev.preventDefault();
-    
+
         try {
-            const response = await fetch('http://127.0.0.1:5001/add-place', {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({...data})
-            });
-
-            return response.json();
-
+            const response = await api.createPlace(data);
+            return response;
         } catch (error) {
             console.log(error);
         }
@@ -155,7 +147,10 @@ function AddPlaces() {
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
-                        <button onClick={addPlace} className="max-w-md primary mt-10 mb-4">
+                        <button
+                            onClick={addPlace}
+                            className="max-w-md primary mt-10 mb-4"
+                        >
                             Add place
                         </button>
                     </div>
