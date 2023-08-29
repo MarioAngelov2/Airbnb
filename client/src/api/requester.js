@@ -82,12 +82,29 @@ export async function uploadPhotoFromDevice(data) {
     try {
         const response = await fetch(`${URL}/upload`, {
             method: "POST",
-            body: data
-        })
+            body: data,
+        });
 
         return response.json();
     } catch (error) {
-        console.log(error)
+        console.log(error);
+    }
+}
+
+export async function createPlace(data) {
+    try {
+        const response = await fetch("http://127.0.0.1:5001/add-place", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...data }),
+        });
+
+        return response.json();
+    } catch (error) {
+        console.log(error);
     }
 }
 
