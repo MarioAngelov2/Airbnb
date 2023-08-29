@@ -108,31 +108,24 @@ export async function createPlace(data) {
     }
 }
 
-// axios
+export async function getUserPlaces() {
+    try {
+        const response = await fetch("http://127.0.0.1:5001/user-places", {
+            method: "GET",
+            credentials: "include",
+        });
+        return response.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-// export async function register(data) {
-//     try {
-//         const response = await axios.post("/register", data);
-//         return response;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+export async function getPlace(id) {
+    try {
+        const response = await fetch("http://127.0.0.1:5001/place/" + id);
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-// export async function login(data) {
-//     try {
-//         const response = await axios.post("/login", data);
-//         return response;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
-// export async function getUser() {
-//     try {
-//         const response = await axios.get("/profile");
-//         return response;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
