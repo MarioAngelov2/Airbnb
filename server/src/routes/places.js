@@ -11,6 +11,7 @@ const createPlace = require("../controllers/Places/createPlace");
 const userPlaces = require("../controllers/Places/userPlaces");
 const place = require("../controllers/Places/place");
 const updatePlace = require("../controllers/Places/updatePlace");
+const places = require("../controllers/Places/places");
 
 const parentDirectory = path.resolve(__dirname, "..");
 const PATH_TO_UPLOADS = path.join(
@@ -36,5 +37,6 @@ router.post("/add-place", createPlace);
 router.get("/user-places", userPlaces);
 router.get("/place/:id", place);
 router.put("/place/:id", updatePlace);
+router.get("/places", places);
 
 module.exports = router;
