@@ -1,6 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { AiOutlineCloudUpload } from "react-icons/ai";
+import {
+    AiOutlineCloudUpload,
+    AiOutlineStar,
+    AiFillStar,
+} from "react-icons/ai";
+import { RiDeleteBin7Line } from "react-icons/ri";
 import * as api from "../../api/requester";
 
 function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
@@ -33,6 +38,21 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
         }
     }
 
+    const deletePhoto = (ev, photo) => {
+        ev.preventDefault();
+        setUploadPhotos([
+            ...uploadPhotos.filter((currentPhoto) => currentPhoto !== photo),
+        ]);
+    };
+
+    const coverPhoto = (ev, photo) => {
+        ev.preventDefault();
+        setUploadPhotos([
+            photo,
+            ...uploadPhotos.filter((currentPhoto) => currentPhoto !== photo),
+        ]);
+    };
+
     return (
         <>
             <div className="flex gap-4">
@@ -52,12 +72,30 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
             <div className="grid gap-2 mt-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {uploadPhotos.length > 0 &&
                     uploadPhotos.map((photo) => (
-                        <img
-                            key={photo}
-                            className="rounded-2xl aspect-square object-cover"
-                            src={"http://localhost:5001/uploads/" + photo}
-                            alt=""
-                        />
+                        <div className="flex relative" key={photo}>
+                            <img
+                                className="rounded-2xl aspect-square object-cover"
+                                src={"http://localhost:5001/uploads/" + photo}
+                                alt=""
+                            />
+                            <button
+                                onClick={(ev) => coverPhoto(ev, photo)}
+                                className="bg-neutral-900 bg-opacity-60 px-2 py-1 rounded-full text-white absolute top-3 left-3"
+                            >
+                                {photo === uploadPhotos[0] && (
+                                    <AiFillStar size={26} />
+                                )}
+                                {photo !== uploadPhotos[0] && (
+                                    <AiOutlineStar size={26} />
+                                )}
+                            </button>
+                            <button
+                                onClick={(ev) => deletePhoto(ev, photo)}
+                                className="bg-neutral-900 bg-opacity-60 px-2 py-1 rounded-full text-white absolute bottom-3 right-3"
+                            >
+                                <RiDeleteBin7Line size={26} />
+                            </button>
+                        </div>
                     ))}
             </div>
             <label className="flex h-32 mt-2 max-w-lg md:max-w-xs items-center justify-center cursor-pointer gap-1 border bg-transparent rounded-2xl text-gray-500">
