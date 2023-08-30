@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import * as api from "../../api/requester";
 import AccountNav from "../Account/AccountNav";
 import UploadPhotos from "./UploadPhotos";
@@ -16,20 +17,30 @@ function AddPlaces() {
     const [maxGuests, setMaxGuests] = useState("");
     const [price, setPrice] = useState("");
 
-    const inputHeader = (text) => (
-        <h2 className="text-2xl font-semibold mt-8">{text}</h2>
-    );
+    const navigate = useNavigate();
+    const { id } = useParams();
 
-    const inputDescription = (description) => (
-        <p className="text-sm text-gray-400">{description}</p>
-    );
+    async function getPlaceDetails() {
+        const response = await api.getPlace(id);
+        const data = await response.json();
+        setTitle(data.title);
+        setAddress(data.address);
+        setUploadPhotos(data.photos);
+        setDescription(data.description);
+        setPerks(data.perks);
+        setExtraInfo(data.extraInfo);
+        setCheckIn(data.checkIn);
+        setCheckout(data.checkOut);
+        setMaxGuests(data.maxGuests);
+        setPrice(data.price);
+    }
 
-    const preInput = (header, description) => (
-        <>
-            {inputHeader(header)}
-            {inputDescription(description)}
-        </>
-    );
+    useEffect(() => {
+        if (!id) {
+            return;
+        }
+        getPlaceDetails();
+    }, [id]);
 
     const data = {
         title,
@@ -48,12 +59,34 @@ function AddPlaces() {
         ev.preventDefault();
 
         try {
-            const response = await api.createPlace(data);
-            return response;
+            if (id) {
+                const response = await api.updatePlace(id, { ...data });
+                navigate("/");
+                return response;
+            } else {
+                const response = await api.createPlace({ ...data });
+                navigate("/");
+                return response;
+            }
         } catch (error) {
             console.log(error);
         }
     }
+
+    const inputHeader = (text) => (
+        <h2 className="text-2xl font-semibold mt-8">{text}</h2>
+    );
+
+    const inputDescription = (description) => (
+        <p className="text-sm text-gray-400">{description}</p>
+    );
+
+    const preInput = (header, description) => (
+        <>
+            {inputHeader(header)}
+            {inputDescription(description)}
+        </>
+    );
 
     return (
         <div>
@@ -151,7 +184,7 @@ function AddPlaces() {
                             onClick={addPlace}
                             className="max-w-md primary mt-10 mb-4"
                         >
-                            Add place
+                            Save
                         </button>
                     </div>
                 </form>
