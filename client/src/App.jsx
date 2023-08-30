@@ -17,7 +17,7 @@ axios.defaults.withCredentials = true;
 function App() {
     return (
         <UserContextProvider>
-            <div className="py-3 px-4">
+            <div className="py-4 px-5">
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
