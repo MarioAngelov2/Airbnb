@@ -123,9 +123,23 @@ export async function getUserPlaces() {
 export async function getPlace(id) {
     try {
         const response = await fetch("http://127.0.0.1:5001/place/" + id);
-        return response
+        return response;
     } catch (error) {
         console.log(error);
     }
 }
 
+export async function updatePlace(id, data) {
+    try {
+        const response = await fetch(`${URL}/place/${id}`, {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id, ...data }),
+        });
+
+        return response;
+    } catch (error) {}
+}
