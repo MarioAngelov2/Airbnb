@@ -9,15 +9,15 @@ import AddPlaces from "./components/AddPlaces/AddPlaces";
 
 import UserContextProvider from "./context/userContext";
 import Home from "./components/Home/Home";
+import PlacePage from "./components/Places/PlacePage";
 
 axios.defaults.baseURL = "http://127.0.0.1:5001";
 axios.defaults.withCredentials = true;
 
-
 function App() {
     return (
         <UserContextProvider>
-            <div className="py-4 px-5">
+            <div className="py-4 px-6 md:px-12 lg:px-24">
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -27,6 +27,7 @@ function App() {
                     <Route path="/account/places" element={<UserPlaces />} />
                     <Route path="/account/places/new" element={<AddPlaces />} />
                     <Route path="/account/places/:id" element={<AddPlaces />} />
+                    <Route path="/places/:id" element={<PlacePage />} />
                 </Routes>
             </div>
         </UserContextProvider>
