@@ -143,3 +143,12 @@ export async function updatePlace(id, data) {
         return response;
     } catch (error) {}
 }
+
+export async function getPlaces() {
+    try {
+        const response = await fetch(`${URL}/places`);
+        return response.json();
+    } catch (error) {
+        console.log(error)
+    }
+}
