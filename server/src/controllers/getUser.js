@@ -22,17 +22,6 @@ const getUser = async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-
-    // if (token) {
-    //     jwt.verify(token, process.env.JWT_SECRET, {}, async (err, user) => {
-    //         if (err) throw err
-
-    //         const {name, email, id} = await User.findById(user.id);
-    //         res.json({name, email, id})
-    //     })
-    // } else {
-    //     res.json(null)
-    // }
 };
 
 module.exports = getUser;
