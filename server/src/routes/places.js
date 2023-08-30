@@ -10,6 +10,7 @@ const uploadPhotoFromDevice = require("../controllers/UploadPhotos/UploadFromDev
 const createPlace = require("../controllers/Places/createPlace");
 const userPlaces = require("../controllers/Places/userPlaces");
 const place = require("../controllers/Places/place");
+const updatePlace = require("../controllers/Places/updatePlace");
 
 const parentDirectory = path.resolve(__dirname, "..");
 const PATH_TO_UPLOADS = path.join(
@@ -34,5 +35,6 @@ router.post(
 router.post("/add-place", createPlace);
 router.get("/user-places", userPlaces);
 router.get("/place/:id", place);
+router.put("/place/:id", updatePlace);
 
 module.exports = router;
