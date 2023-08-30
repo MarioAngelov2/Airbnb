@@ -15,8 +15,8 @@ function Home() {
     }, []);
 
     return (
-        <div className="max-w-global mx-auto mt-12">
-            <div className="grid gap-x-5 gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-global mx-auto mt-14">
+            <div className="grid gap-x-5 gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {places.length > 0 &&
                     places.map((place) => (
                         <Link to={'/places/' + place._id} key={place._id} className="rounded-2xl">
