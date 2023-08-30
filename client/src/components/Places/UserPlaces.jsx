@@ -3,6 +3,7 @@ import AccountNav from "../Account/AccountNav";
 import { Link } from "react-router-dom";
 import * as api from "../../api/requester";
 
+
 function Places() {
     const [places, setPlaces] = useState([]);
 
@@ -35,12 +36,12 @@ function Places() {
                     places.map((place) => (
                         <Link
                             to={`/account/places/${place._id}`}
-                            key={place}
-                            className="flex gap-4 bg-gray-100 rounded-2xl p-4"
+                            key={place._id}
+                            className="flex flex-col md:flex-row gap-4 mt-4 bg-gray-100 rounded-2xl p-4"
                         >
-                            <div className="flex w-42 h-44 bg-gray-300 shrink-0">
+                            <div className="flex w-42 h-46 md:max-w-[320px] md:h-44 bg-gray-300 shrink-0">
                                 <img
-                                    className="object-cover"
+                                    className="object-fill aspect-square w-64"
                                     src={
                                         "http://localhost:5001/uploads/" +
                                         place.photos[0]
@@ -49,8 +50,10 @@ function Places() {
                                 />
                             </div>
                             <div className="flex flex-col gap-3 grow-0 shrink max-h-44 overflow-hidden">
-                              <h2 className="font-semibold text-lg">{place.title}</h2>
-                              <p className="text-sm">{place.description}</p>
+                                <h2 className="font-semibold text-lg">
+                                    {place.title}
+                                </h2>
+                                <p className="text-sm">{place.description}</p>
                             </div>
                         </Link>
                     ))}
