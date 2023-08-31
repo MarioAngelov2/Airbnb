@@ -12,6 +12,7 @@ const userPlaces = require("../controllers/Places/userPlaces");
 const place = require("../controllers/Places/place");
 const updatePlace = require("../controllers/Places/updatePlace");
 const places = require("../controllers/Places/places");
+const bookPlace = require("../controllers/Booking/bookPlace");
 
 const parentDirectory = path.resolve(__dirname, "..");
 const PATH_TO_UPLOADS = path.join(
@@ -38,5 +39,6 @@ router.get("/user-places", userPlaces);
 router.get("/place/:id", place);
 router.put("/place/:id", updatePlace);
 router.get("/places", places);
+router.post("/place/booking/:id", bookPlace);
 
 module.exports = router;
