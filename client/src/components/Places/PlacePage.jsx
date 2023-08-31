@@ -18,8 +18,6 @@ function PlacePage() {
         setReady(true);
     }
 
-    console.log(place);
-
     useEffect(() => {
         getPlace();
     }, [id]);
