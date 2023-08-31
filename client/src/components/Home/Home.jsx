@@ -19,7 +19,11 @@ function Home() {
             <div className="grid gap-x-5 gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {places.length > 0 &&
                     places.map((place) => (
-                        <Link to={'/places/' + place._id} key={place._id} className="rounded-2xl">
+                        <Link
+                            to={"/places/" + place._id}
+                            key={place._id}
+                            className="rounded-2xl"
+                        >
                             <img
                                 src={
                                     "http://localhost:5001/uploads/" +
@@ -34,7 +38,10 @@ function Home() {
                             <p className="text-sm text-gray-400 truncate">
                                 {place.address}
                             </p>
-                            <p className="font-semibold">${place.price}</p>
+                            <div className="flex items-baseline gap-1">
+                                <p className="font-semibold">${place.price}</p>
+                                <p className="text-sm">night</p>
+                            </div>
                         </Link>
                     ))}
             </div>
