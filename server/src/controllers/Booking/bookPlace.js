@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const bookPlace = async (req, res) => {
     const { id } = req.params;
     const { token } = req.cookies;
-    const { checkIn, checkOut, guests, name, phone } = req.body;
+    const { checkIn, checkOut, guests, name, phone, price } = req.body;
 
     if (!token) {
         throw new Error("Not existing token");
@@ -18,11 +18,13 @@ const bookPlace = async (req, res) => {
 
     const booking = await Booking.create({
         place: id,
+        user: userId,
         checkIn,
         checkOut,
         guests,
         name,
         phone,
+        price,
     });
 
     res.json(booking);
