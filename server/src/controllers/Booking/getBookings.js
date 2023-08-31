@@ -8,7 +8,7 @@ const getBookings = async (req, res) => {
     const userId = decodedToken.id;
 
     if (userId) {
-        const bookings = await Booking.find({}).exec();
+        const bookings = await Booking.find({ user: userId }).populate('place');
         res.json(bookings);
     }
 };
