@@ -24,7 +24,7 @@ function BookingPlces() {
                 {bookings.length > 0 &&
                     bookings.map((place) => (
                         <div
-                            key={place}
+                            key={place.name}
                             className="flex flex-col md:flex-row gap-4 mt-4 bg-gray-100 rounded-2xl"
                         >
                             <div className="flex max-w-full h-46 md:max-w-[320px] md:h-44 bg-gray-300 shrink-0 rounded-tr-2xl rounded-tl-2xl md:rounded-tr-2xl md:rounded-tl-2xl md:rounded-2xl">
