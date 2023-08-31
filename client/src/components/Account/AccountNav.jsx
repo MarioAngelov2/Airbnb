@@ -32,7 +32,7 @@ function AccountNav() {
             </Link>
             <Link
                 className={linkClasses('bookings')}
-                to={""}
+                to={"/account/bookings"} 
             >
                 <FaRegBookmark size={20} />
                 My bookings
