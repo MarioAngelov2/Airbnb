@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { differenceInCalendarDays } from "date-fns";
 import * as api from "../../api/requester";
 
@@ -8,6 +8,7 @@ function BookingWidget({ place }) {
     const [guests, setGuests] = useState("");
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
+    const [allInputsEmpty, setAllInputsEmpty] = useState(true);
 
     let numberOfNights = 0;
 
@@ -21,11 +22,25 @@ function BookingWidget({ place }) {
     let totalSum = numberOfNights * place.price;
     const displaySum = numberOfNights > 0 && `$${totalSum}`;
 
-    const data = { checkIn, checkOut, guests, name, phone, price: numberOfNights * place.price };
+    const data = {
+        checkIn,
+        checkOut,
+        guests,
+        name,
+        phone,
+        price: numberOfNights * place.price,
+    };
 
     async function bookingPlace() {
         await api.bookPlace(place._id, data);
     }
+
+    useEffect(() => {
+        const areInputsEmpty =
+            !checkIn && !checkOut && !guests && !name && !phone;
+
+        setAllInputsEmpty(areInputsEmpty);
+    }, [checkIn, checkOut, guests, name, phone]);
 
     return (
         <>
@@ -78,7 +93,11 @@ function BookingWidget({ place }) {
                     />
                 </div>
             )}
-            <button onClick={bookingPlace} className="primary mt-2">
+            <button
+                disabled={allInputsEmpty}
+                onClick={bookingPlace}
+                className="primary mt-2"
+            >
                 Reserve {displaySum}
             </button>
             <p className="text-sm text-gray-500 text-center mt-2 mb-8">
