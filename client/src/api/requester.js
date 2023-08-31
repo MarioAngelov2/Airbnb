@@ -169,3 +169,19 @@ export async function bookPlace(id, data) {
         console.log(error);
     }
 }
+
+export async function getBookings() {
+    try {
+        const response = await fetch(`${URL}/account/bookings`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        return response.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
