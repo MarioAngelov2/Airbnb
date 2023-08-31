@@ -21,7 +21,7 @@ function BookingWidget({ place }) {
     let totalSum = numberOfNights * place.price;
     const displaySum = numberOfNights > 0 && `$${totalSum}`;
 
-    const data = { checkIn, checkOut, guests, name, phone };
+    const data = { checkIn, checkOut, guests, name, phone, price: numberOfNights * place.price };
 
     async function bookingPlace() {
         await api.bookPlace(place._id, data);
