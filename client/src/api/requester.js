@@ -149,6 +149,23 @@ export async function getPlaces() {
         const response = await fetch(`${URL}/places`);
         return response.json();
     } catch (error) {
-        console.log(error)
+        console.log(error);
+    }
+}
+
+export async function bookPlace(id, data) {
+    try {
+        const response = await fetch(`${URL}/place/booking/${id}`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id, ...data }),
+        });
+
+        return response.json;
+    } catch (error) {
+        console.log(error);
     }
 }
