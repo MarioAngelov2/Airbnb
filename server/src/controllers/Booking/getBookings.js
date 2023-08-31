@@ -1,15 +1,26 @@
 const Booking = require("../../models/Booking");
 const jwt = require("jsonwebtoken");
+const createHttpError = require("http-errors");
 
-const getBookings = async (req, res) => {
-    const { token } = req.cookies;
+const getBookings = async (req, res, next) => {
+    try {
+        const { token } = req.cookies;
 
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    const userId = decodedToken.id;
+        if (!token) {
+            throw new Error("Authorization token not found.");
+        }
 
-    if (userId) {
-        const bookings = await Booking.find({ user: userId }).populate('place');
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decodedToken.id;
+
+        if (!userId) {
+            throw new Error("User ID not found in token.");
+        }
+
+        const bookings = await Booking.find({ user: userId }).populate("place");
         res.json(bookings);
+    } catch (error) {
+        next(error);
     }
 };
 

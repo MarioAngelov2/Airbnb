@@ -1,11 +1,17 @@
 const Place = require("../../models/Place");
 
-const place = async (req, res) => {
-    const { id } = req.params;
+const place = async (req, res, next) => {
+    try {
+        const { id } = req.params;
 
-    if (id) {
+        if (!id) {
+            throw new Error("Place is not found.");
+        }
+
         const place = await Place.findById(id);
-        res.json(place)
+        res.json(place);
+    } catch (error) {
+        next(error);
     }
 };
 
