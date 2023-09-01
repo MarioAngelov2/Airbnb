@@ -185,3 +185,19 @@ export async function getBookings() {
         console.log(error);
     }
 }
+
+export async function deletePlace(id) {
+    try {
+        const response = await fetch(`${URL}/place/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
