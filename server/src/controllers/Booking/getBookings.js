@@ -1,6 +1,5 @@
 const Booking = require("../../models/Booking");
 const jwt = require("jsonwebtoken");
-const createHttpError = require("http-errors");
 
 const getBookings = async (req, res, next) => {
     try {
@@ -18,6 +17,8 @@ const getBookings = async (req, res, next) => {
         }
 
         const bookings = await Booking.find({ user: userId }).populate("place");
+
+        
         res.json(bookings);
     } catch (error) {
         next(error);
