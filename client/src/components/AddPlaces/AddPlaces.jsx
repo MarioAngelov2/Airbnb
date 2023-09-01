@@ -73,6 +73,17 @@ function AddPlaces() {
         }
     }
 
+    async function removePlace(ev) {
+        ev.preventDefault();
+
+        try {
+            await api.deletePlace(id);
+            navigate('/account/places')
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const inputHeader = (text) => (
         <h2 className="text-2xl font-semibold mt-8">{text}</h2>
     );
@@ -91,7 +102,7 @@ function AddPlaces() {
     return (
         <div>
             <AccountNav />
-            <div className="max-w-global mx-auto flex flex-col items-center justify-center">
+            <div className="max-w-global mx-auto flex flex-col items-center justify-center mb-8">
                 <form action="" method="POST" className="max-w-4xl w-full">
                     {preInput(
                         "Title",
@@ -120,6 +131,7 @@ function AddPlaces() {
                         "Add description to your place..."
                     )}
                     <textarea
+                        className="h-32"
                         type="text"
                         placeholder="Add description..."
                         value={description}
@@ -131,6 +143,7 @@ function AddPlaces() {
                     </div>
                     {preInput("Extra Info", "Add extra info for your place")}
                     <textarea
+                    className="h-28"
                         type="text"
                         placeholder="Add extra info..."
                         value={extraInfo}
@@ -179,13 +192,21 @@ function AddPlaces() {
                             />
                         </div>
                     </div>
-                    <div className="flex items-center justify-center">
+                    <div className="flex flex-col items-center justify-center gap-2">
                         <button
                             onClick={addPlace}
-                            className="max-w-md primary mt-10 mb-4"
+                            className="max-w-md primary mt-10 mb-2"
                         >
                             Save
                         </button>
+                        {id ? (
+                            <button
+                                onClick={(ev) => removePlace(ev)}
+                                className="primary max-w-md primary"
+                            >
+                                Delete
+                            </button>
+                        ) : null}
                     </div>
                 </form>
             </div>
