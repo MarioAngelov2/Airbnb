@@ -31,7 +31,7 @@ function Places() {
                     Add new place
                 </Link>
             </div>
-            <div className="mt-12">
+            <div className="mt-12 mb-12">
                 {places.length > 0 &&
                     places.map((place) => (
                         <Link
