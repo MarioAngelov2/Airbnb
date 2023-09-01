@@ -12,6 +12,7 @@ import Home from "./components/Home/Home";
 import PlacePage from "./components/Places/PlacePage";
 import Footer from "./components/Footer/Footer";
 import BookingPlces from "./components/Booking/BookingPlces";
+import BookedPlace from "./components/Booking/BookedPlace";
 
 axios.defaults.baseURL = "http://127.0.0.1:5001";
 axios.defaults.withCredentials = true;
@@ -31,6 +32,7 @@ function App() {
                     <Route path="/account/places/:id" element={<AddPlaces />} />
                     <Route path="/places/:id" element={<PlacePage />} />
                     <Route path="/account/bookings" element={<BookingPlces />} />
+                    <Route path="/account/bookings/:id" element={<BookedPlace />} />
                 </Routes>
             </div>
         </UserContextProvider>
