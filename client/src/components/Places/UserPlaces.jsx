@@ -37,7 +37,7 @@ function Places() {
                         <Link
                             to={`/account/places/${place._id}`}
                             key={place._id}
-                            className="flex flex-col md:flex-row gap-4 mt-4 bg-gray-100 rounded-2xl p-4"
+                            className="flex flex-col md:flex-row gap-4 mt-4 bg-gray-100 hover:shadow-md shadow-black transition duration-300 ease-in-out rounded-2xl p-4"
                         >
                             <div className="flex max-w-full h-46 md:max-w-[320px] md:h-44 bg-gray-300 shrink-0">
                                 <img

@@ -22,7 +22,6 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
     async function uploadFromDevice(ev) {
         const files = ev.target.files;
         const data = new FormData();
-        console.log(ev.target.files);
 
         for (let i = 0; i < files.length; i++) {
             data.append("photos", files[i]);

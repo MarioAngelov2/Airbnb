@@ -2,24 +2,18 @@ const User = require("../models/User");
 const createHttpError = require("http-errors");
 const bcrypt = require("bcryptjs");
 
-const createUser = async (req, res) => {
-    const { name, email, password } = req.body;
-
+const createUser = async (req, res, next) => {
     try {
+        const { name, email, password } = req.body;
+
         if (!name || !email || !password) {
-            throw createHttpError(
-                400,
-                "Username, email or password are missing"
-            );
+            throw new Error("Username, email or password are missing");
         }
 
         const existingUser = await User.findOne({ email: email }).exec();
 
         if (existingUser) {
-            throw createHttpError(
-                409,
-                "The user already exist. Please log in."
-            );
+            throw new Error("The user already exist. Please log in.");
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -33,7 +27,7 @@ const createUser = async (req, res) => {
         await newUser.save();
         res.status(201).json(newUser);
     } catch (error) {
-        console.log(error);
+        next(error);
     }
 };
 
