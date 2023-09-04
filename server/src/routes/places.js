@@ -16,6 +16,7 @@ const bookPlace = require("../controllers/Booking/bookPlace");
 const getBookings = require("../controllers/Booking/getBookings");
 const deletePlace = require("../controllers/Places/deletePlace");
 const getBookedPlace = require("../controllers/Booking/getBookedPlace");
+const deleteBooking = require("../controllers/Booking/deleteBooking");
 
 const parentDirectory = path.resolve(__dirname, "..");
 const PATH_TO_UPLOADS = path.join(
@@ -46,5 +47,6 @@ router.post("/place/booking/:id", bookPlace);
 router.get("/account/bookings", getBookings);
 router.delete("/place/:id", deletePlace);
 router.get("/account/bookings/:id", getBookedPlace);
+router.delete("/account/bookings/:id", deleteBooking);
 
 module.exports = router;
