@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { differenceInCalendarDays } from "date-fns";
+import { useNavigate } from "react-router-dom";
 import * as api from "../../api/requester";
 
 function BookingWidget({ place }) {
@@ -9,6 +10,7 @@ function BookingWidget({ place }) {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [allInputsEmpty, setAllInputsEmpty] = useState(true);
+    const navigate = useNavigate();
 
     let numberOfNights = 0;
 
@@ -33,6 +35,7 @@ function BookingWidget({ place }) {
 
     async function bookingPlace() {
         await api.bookPlace(place._id, data);
+        navigate('/account/bookings')
     }
 
     useEffect(() => {
