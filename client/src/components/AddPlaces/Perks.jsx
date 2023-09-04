@@ -30,8 +30,8 @@ function Perks({ perks, setPerks }) {
                 <span className={spanStyle}>WiFi</span>
                 <input
                     type="checkbox"
-                    name="wifi"
-                    checked={perks.includes("wifi")}
+                    name="WiFi"
+                    checked={perks.includes("WiFi")}
                     onChange={handleClick}
                 />
             </label>
@@ -40,8 +40,8 @@ function Perks({ perks, setPerks }) {
                 <span className={spanStyle}>Pets Allowed</span>
                 <input
                     type="checkbox"
-                    name="pets"
-                    checked={perks.includes("pets")}
+                    name="Pets"
+                    checked={perks.includes("Pets")}
                     onChange={handleClick}
                 />
             </label>
@@ -50,8 +50,8 @@ function Perks({ perks, setPerks }) {
                 <span className={spanStyle}>Free Parking</span>
                 <input
                     type="checkbox"
-                    name="parking"
-                    checked={perks.includes("parking")}
+                    name="Parking"
+                    checked={perks.includes("Parking")}
                     onChange={handleClick}
                 />
             </label>
@@ -60,8 +60,8 @@ function Perks({ perks, setPerks }) {
                 <span className={spanStyle}>Kitchen</span>
                 <input
                     type="checkbox"
-                    name="kitchen"
-                    checked={perks.includes("kitchen")}
+                    name="Kitchen"
+                    checked={perks.includes("Kitchen")}
                     onChange={handleClick}
                 />
             </label>
@@ -70,8 +70,8 @@ function Perks({ perks, setPerks }) {
                 <span className={spanStyle}>Work Space</span>
                 <input
                     type="checkbox"
-                    name="workSpace"
-                    checked={perks.includes("workSpace")}
+                    name="Work Space"
+                    checked={perks.includes("Work Space")}
                     onChange={handleClick}
                 />
             </label>
@@ -80,8 +80,8 @@ function Perks({ perks, setPerks }) {
                 <span className={spanStyle}>TV</span>
                 <input
                     type="checkbox"
-                    name="tv"
-                    checked={perks.includes("tv")}
+                    name="TV"
+                    checked={perks.includes("TV")}
                     onChange={handleClick}
                 />
             </label>
@@ -90,8 +90,8 @@ function Perks({ perks, setPerks }) {
                 <span className={spanStyle}>Aircondition</span>
                 <input
                     type="checkbox"
-                    name="aircondition"
-                    checked={perks.includes("aircondition")}
+                    name="Aircondition"
+                    checked={perks.includes("Aircondition")}
                     onChange={handleClick}
                 />
             </label>
@@ -100,8 +100,8 @@ function Perks({ perks, setPerks }) {
                 <span className={spanStyle}>Mountain View</span>
                 <input
                     type="checkbox"
-                    name="mountainView"
-                    checked={perks.includes("mountainView")}
+                    name="Mountain View"
+                    checked={perks.includes("Mountain View")}
                     onChange={handleClick}
                 />
             </label>
