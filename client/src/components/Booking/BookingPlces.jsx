@@ -19,13 +19,24 @@ function BookingPlces() {
         getBookings();
     }, []);
 
-   async function removeBooking(id) {
-    try {
-        await api.deleteBooking(id);
-    } catch (error) {
-        console.log(error)
+    async function removeBooking(id) {
+        try {
+            await api.deleteBooking(id);
+        } catch (error) {
+            console.log(error);
+        }
     }
-   }
+
+    if (bookings.length <= 0) {
+        return (
+            <div>
+                <AccountNav />
+                <div className="flex justify-center">
+                    <h1 className="text-3xl font-bold mt-12">There is no bookings yet.</h1>
+                    </div>
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-global mx-auto">
@@ -96,7 +107,9 @@ function BookingPlces() {
                                 </>
                             ) : (
                                 <div className="flex flex-col items-center mx-auto py-8 px-4">
-                                    <button onClick={() => removeBooking(place._id)}>
+                                    <button
+                                        onClick={() => removeBooking(place._id)}
+                                    >
                                         <RiDeleteBin7Line
                                             className="absolute top-4 right-5"
                                             size={24}
