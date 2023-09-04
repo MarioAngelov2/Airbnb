@@ -4,6 +4,7 @@ import * as api from "../../api/requester";
 import { format, differenceInCalendarDays } from "date-fns";
 import { BsMoon, BsCalendarDate } from "react-icons/bs";
 import { AiOutlineCreditCard } from "react-icons/ai";
+import { RiDeleteBin7Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 function BookingPlces() {
@@ -17,14 +18,27 @@ function BookingPlces() {
     useEffect(() => {
         getBookings();
     }, []);
-    
+
+   async function removeBooking(id) {
+    try {
+        await api.deleteBooking(id);
+    } catch (error) {
+        console.log(error)
+    }
+   }
+
     return (
         <div className="max-w-global mx-auto">
             <AccountNav />
-            <div className="mt-12 mb-12">
+            <div className="mt-12 mb-12 relative">
                 {bookings.length > 0 &&
                     bookings.map((place) => (
-                        <Link to={`/account/bookings/` + place._id}
+                        <Link
+                            to={
+                                place.place === null
+                                    ? "/account/bookings"
+                                    : `/account/bookings/` + place._id
+                            }
                             key={place?.name}
                             className="flex flex-col items-center md:flex-row gap-4 mt-4 bg-gray-100 rounded-2xl hover:shadow-md shadow-black transition duration-300 ease-in-out"
                         >
@@ -32,7 +46,7 @@ function BookingPlces() {
                                 <>
                                     <div className="flex max-w-full h-46 md:max-w-[320px] md:h-44 bg-gray-300 shrink-0 rounded-tr-2xl rounded-tl-2xl md:rounded-tr-2xl md:rounded-tl-2xl md:rounded-2xl">
                                         <img
-                                            className="rounded-tl-2xl rounded-tr-2xl md:rounded-tr-none md:rounded-bl-2xl md:rounded-tl-2xl"
+                                            className="rounded-tl-2xl md:aspect-square md:w-[240px] lg:w-[280px] rounded-tr-2xl md:rounded-tr-none md:rounded-bl-2xl md:rounded-tl-2xl"
                                             src={
                                                 "http://localhost:5001/uploads/" +
                                                 place.place?.photos?.[0]
@@ -82,6 +96,12 @@ function BookingPlces() {
                                 </>
                             ) : (
                                 <div className="flex flex-col items-center mx-auto py-8 px-4">
+                                    <button onClick={() => removeBooking(place._id)}>
+                                        <RiDeleteBin7Line
+                                            className="absolute top-4 right-5"
+                                            size={24}
+                                        />
+                                    </button>
                                     <h2 className="items-center text-xl font-semibold mb-1">
                                         Something went wrong.
                                     </h2>
