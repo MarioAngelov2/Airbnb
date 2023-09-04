@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const URL = "http://127.0.0.1:5001";
 
 export async function register(data) {
@@ -192,12 +190,44 @@ export async function deletePlace(id) {
             method: "DELETE",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json"
-            }
-        })
+                "Content-Type": "application/json",
+            },
+        });
 
-        return response
+        return response;
     } catch (error) {
-        console.log(error)
+        console.log(error);
+    }
+}
+
+export async function getBookedPlace(id) {
+    try {
+        const response = await fetch(`${URL}/account/bookings/` + id, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        return response.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function deleteBooking(id) {
+    try {
+        const response = await fetch(`${URL}/account/bookings/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        return response;
+    } catch (error) {
+        console.log(error);
     }
 }
