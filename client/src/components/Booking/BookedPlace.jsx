@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../api/requester";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { CiLocationOn } from "react-icons/ci";
 import { format, differenceInCalendarDays } from "date-fns";
@@ -10,6 +10,7 @@ function BookedPlace() {
     const [bookedPlace, setBookedPlace] = useState([]);
     const [ready, setReady] = useState(false);
     const { id } = useParams();
+    const navigate = useNavigate();
 
     async function getPlace() {
         try {
@@ -24,6 +25,15 @@ function BookedPlace() {
     useEffect(() => {
         getPlace();
     }, []);
+
+    async function removeBooking(id) {
+        try {
+            await api.deleteBooking(id);
+            navigate("/account/bookings");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     if (!ready) {
         return (
@@ -145,9 +155,14 @@ function BookedPlace() {
                     </div>
                 </div>
             </div>
-            <div className="border-t-2 mt-6"/>
+            <div className="border-t-2 mt-6" />
             <div className="flex justify-center mt-4">
-                <button className="primary max-w-[200px] md:max-w-md mb-4">Delete booking</button>
+                <button
+                    onClick={() => removeBooking(bookedPlace._id)}
+                    className="primary max-w-[200px] md:max-w-md mb-4"
+                >
+                    Delete booking
+                </button>
             </div>
         </div>
     );
