@@ -95,13 +95,13 @@ function PlacePage() {
                         </div>
                     </div>
                 </div>
-                <button className="bg-white border px-4 py-2 rounded-2xl flex gap-2 absolute bottom-8 right-6 grow-0">
+                <button className="bg-white border px-4 py-2 rounded-2xl flex gap-2 absolute bottom-8 right-6 grow-0 shadow-md shadow-gray-700">
                     <PiDotsNine size={24} />
                     Show all photos
                 </button>
             </div>
             {/* booking section */}
-          <PlacePageDetails place={place}/>
+            <PlacePageDetails place={place} />
         </div>
     );
 }
