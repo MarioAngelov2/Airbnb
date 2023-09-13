@@ -1,8 +1,6 @@
 # Airbnb clone - Documentation
 Welcome to Airbnb clone documentation. This document provides an overview of the app's functionality and technology stack.
 
-## Live Demo - [Airbnb]('')
-
 ## Introduction
 
 Welcome to the Airbnb Clone App documentation. This app is built using the MERN stack (MongoDB, Express, React, Node.js) and provides a platform for users to list their properties for rent, book properties, and manage their listings and bookings.
