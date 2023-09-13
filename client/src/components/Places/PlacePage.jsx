@@ -9,6 +9,7 @@ import PlacePageDetails from "./PlacePageDetails";
 function PlacePage() {
     const [place, setPlace] = useState([]);
     const [ready, setReady] = useState(false);
+    const [showAllPhotos, setShowAllPhotos] = useState(false);
     const { id } = useParams();
 
     async function getPlace() {
@@ -27,6 +28,29 @@ function PlacePage() {
             <div className="flex flex-col items-center justify-center mt-32">
                 <ClipLoader className="mb-4" />
                 <span>Loading...</span>
+            </div>
+        );
+    }
+
+    if (showAllPhotos) {
+        return (
+            <div className="max-w-global mx-auto">
+                <div className="absolute inset-0 bg-white min-h-screen flex flex-col gap-4">
+                    <div className="mt-12 mb-12">
+                        {place.photos.map((photo) => (
+                            <div className="flex justify-center px-4 md:px-16">
+                                <img
+                                    className="mb-8"
+                                    key={photo}
+                                    src={
+                                        "http://localhost:5001/uploads/" + photo
+                                    }
+                                    alt=""
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         );
     }
@@ -95,7 +119,10 @@ function PlacePage() {
                         </div>
                     </div>
                 </div>
-                <button className="bg-white border px-4 py-2 rounded-2xl flex gap-2 absolute bottom-8 right-6 grow-0 shadow-md shadow-gray-700">
+                <button
+                    onClick={() => setShowAllPhotos(true)}
+                    className="bg-white border px-4 py-2 rounded-2xl flex gap-2 absolute bottom-8 right-6 grow-0 shadow-md shadow-gray-700"
+                >
                     <PiDotsNine size={24} />
                     Show all photos
                 </button>
