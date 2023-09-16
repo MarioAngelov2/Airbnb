@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { differenceInCalendarDays } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import * as api from "../../api/requester";
+import { UserContext } from "../../context/userContext";
 
 function BookingWidget({ place }) {
     const [checkIn, setCheckIn] = useState("");
@@ -11,6 +12,7 @@ function BookingWidget({ place }) {
     const [phone, setPhone] = useState("");
     const [allInputsEmpty, setAllInputsEmpty] = useState(true);
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
 
     let numberOfNights = 0;
 
@@ -35,7 +37,7 @@ function BookingWidget({ place }) {
 
     async function bookingPlace() {
         await api.bookPlace(place._id, data);
-        navigate('/account/bookings')
+        navigate("/account/bookings");
     }
 
     useEffect(() => {
@@ -96,16 +98,26 @@ function BookingWidget({ place }) {
                     />
                 </div>
             )}
-            <button
-                disabled={allInputsEmpty}
-                onClick={bookingPlace}
-                className="primary mt-2"
-            >
-                Reserve {displaySum}
-            </button>
-            <p className="text-sm text-gray-500 text-center mt-2 mb-8">
-                You won't be charget yet.
-            </p>
+            {user ? (
+                <>
+                    <button
+                        disabled={allInputsEmpty}
+                        onClick={bookingPlace}
+                        className="primary mt-2"
+                    >
+                        Reserve {displaySum}
+                    </button>
+                    <p className="text-sm text-gray-500 text-center mt-2 mb-8">
+                        You won't be charget yet.
+                    </p>
+                </>
+            ) : (
+                <div className="flex justify-center p-6">
+                    <h1 className="text-center text-lg font-semibold">
+                        You must be logged in to book this place.
+                    </h1>
+                </div>
+            )}
         </>
     );
 }
