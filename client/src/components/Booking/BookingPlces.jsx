@@ -6,13 +6,21 @@ import { BsMoon, BsCalendarDate } from "react-icons/bs";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function BookingPlces() {
     const [bookings, setBookings] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     async function getBookings() {
-        const response = await api.getBookings();
-        setBookings(response);
+        try {
+            const response = await api.getBookings();
+            setBookings(response);
+            setIsLoading(false);
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false);
+        }
     }
 
     useEffect(() => {
@@ -27,13 +35,24 @@ function BookingPlces() {
         }
     }
 
+    if (isLoading) {
+        return (
+            <div className="flex flex-col items-center justify-center mt-32">
+                <ClipLoader className="mb-4" />
+                <span>Loading...</span>
+            </div>
+        );
+    }
+
     if (bookings.length <= 0) {
         return (
             <div>
                 <AccountNav />
                 <div className="flex justify-center">
-                    <h1 className="text-3xl font-bold mt-12">There is no bookings yet.</h1>
-                    </div>
+                    <h1 className="text-2xl font-semibold mt-12">
+                        There is no bookings yet.
+                    </h1>
+                </div>
             </div>
         );
     }

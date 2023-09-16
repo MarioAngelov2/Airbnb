@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../api/requester";
 import { Link } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Home() {
     const [places, setPlaces] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     async function getPlaces() {
-        const response = await api.getPlaces();
-        setPlaces(response);
+        try {
+            const response = await api.getPlaces();
+            setPlaces(response);
+            setIsLoading(false)
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false)
+        }
     }
 
     useEffect(() => {
         getPlaces();
     }, []);
+
+    if (isLoading) {
+        return (
+            <div className="flex flex-col items-center justify-center mt-32">
+                <ClipLoader className="mb-4" />
+                <span>Loading...</span>
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-global mx-auto mt-14 mb-14">
