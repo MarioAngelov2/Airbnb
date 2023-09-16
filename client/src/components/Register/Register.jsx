@@ -14,7 +14,7 @@ function Register() {
         ev.preventDefault();
 
         const data = { name, email, password };
-        await api.register(data);
+        await api.register(data)
         navigate("/");
     };
 
