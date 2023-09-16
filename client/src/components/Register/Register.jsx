@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import * as api from "../../api/requester";
@@ -7,6 +7,7 @@ function Register() {
     const [name, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isEmpty, setIsEmpty] = useState(true);
     const navigate = useNavigate();
 
     const handleSubmit = async (ev) => {
@@ -14,8 +15,14 @@ function Register() {
 
         const data = { name, email, password };
         await api.register(data);
-        navigate('/')
+        navigate("/");
     };
+
+    useEffect(() => {
+        const emptyInputs = !email && !password;
+
+        setIsEmpty(emptyInputs);
+    }, [name, email, password]);
 
     return (
         <div className="max-w-global mx-auto flex justify-center mt-20">
@@ -40,7 +47,7 @@ function Register() {
                         value={password}
                         onChange={(ev) => setPassword(ev.target.value)}
                     />
-                    <button className="primary mt-5">Register</button>
+                    <button disabled={isEmpty} className="primary mt-5">Register</button>
                 </form>
                 <div className="text-center mt-4">
                     Already have an account?{" "}
