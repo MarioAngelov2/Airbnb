@@ -12,7 +12,7 @@ const uploadPhotoFromDevice = async (req, res, next) => {
             fs.renameSync(path, newPath);
             uploadedFiles.push(
                 newPath.replace(
-                    "/Users/marioangelov/Desktop/Airbnb/server/src/controllers/UploadPhotos/uploads/",
+                    "/Users/marioangelov/Desktop/Airbnb/server/assets/uploads/",
                     ""
                 )
             );

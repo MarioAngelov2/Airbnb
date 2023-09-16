@@ -12,7 +12,7 @@ const uploadByLink = async (req, res, next) => {
 
         await imageDownloader.image({
             url: link,
-            dest: __dirname + "/uploads/" + newName,
+            dest: __dirname + "../../assets/uploads/" + newName,
         });
         res.json(newName);
     } catch (error) {

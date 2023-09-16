@@ -10,7 +10,7 @@ const { default: mongoose } = require("mongoose");
 
 const PATH_TO_UPLOADS = path.join(
     __dirname,
-    "/src/controllers/UploadPhotos/uploads"
+    "/assets/uploads"
 );
 
 const app = express();
