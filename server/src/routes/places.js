@@ -18,10 +18,10 @@ const deletePlace = require("../controllers/Places/deletePlace");
 const getBookedPlace = require("../controllers/Booking/getBookedPlace");
 const deleteBooking = require("../controllers/Booking/deleteBooking");
 
-const parentDirectory = path.resolve(__dirname, "..");
+const parentDirectory = path.resolve(__dirname, "../../");
 const PATH_TO_UPLOADS = path.join(
     parentDirectory,
-    "/controllers/UploadPhotos/uploads"
+    "/assets/uploads/"
 );
 
 const photosMiddleware = multer({ dest: PATH_TO_UPLOADS });
