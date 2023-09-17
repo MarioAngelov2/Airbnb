@@ -1,8 +1,8 @@
 const logout = (req, res, next) => {
     try {
-        res.cookie("token", "", {
-            expires: new Date(0),
-            sameSite: "Lax",
+        res.clearCookie("token", {
+            httpOnly: true,
+            sameSite: "None",
             secure: true,
         });
 
@@ -13,3 +13,10 @@ const logout = (req, res, next) => {
 };
 
 module.exports = logout;
+
+
+// res.cookie("token", "", {
+//     expires: new Date(0),
+//     sameSite: "None",
+//     secure: true,
+// });
