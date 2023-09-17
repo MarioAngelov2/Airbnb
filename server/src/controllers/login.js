@@ -19,17 +19,20 @@ const loginUser = async (req, res, next) => {
                     {},
                     (err, token) => {
                         if (err) throw err;
-                        res.cookie("token", token).json(user);
+                        res.cookie("token", token, {
+                            httpOnly: true,
+                            secure: true,
+                        }).json(user);
                     }
                 );
             } else {
-                throw new Error('Invalid credentials');
+                throw new Error("Invalid credentials");
             }
         } else {
             throw new Error("User not found");
         }
     } catch (error) {
-        next(error)
+        next(error);
     }
 };
 
