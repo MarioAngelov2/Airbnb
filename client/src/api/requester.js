@@ -1,4 +1,4 @@
-const URL = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:5173' : "https://airbnb-clone-64cu.onrender.com";
+const URL = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:5001' : "https://airbnb-clone-64cu.onrender.com";
 
 export async function register(data) {
     try {
