@@ -7,7 +7,10 @@ import { PiDotsNine } from "react-icons/pi";
 import { IoChevronBackOutline } from "react-icons/io5";
 import PlacePageDetails from "./PlacePageDetails";
 
-const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
+const URL_TO_UPLOADS =
+    process.env.NODE_ENV === "development"
+        ? "http://localhost:5001/uploads/"
+        : "https://airbnb-clone-64cu.onrender.com/uploads/";
 
 function PlacePage() {
     const [place, setPlace] = useState([]);

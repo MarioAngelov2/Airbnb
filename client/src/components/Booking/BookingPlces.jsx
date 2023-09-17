@@ -8,7 +8,10 @@ import { RiDeleteBin7Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
+const URL_TO_UPLOADS =
+    process.env.NODE_ENV === "development"
+        ? "http://localhost:5001/uploads/"
+        : "https://airbnb-clone-64cu.onrender.com/uploads/";
 
 function BookingPlces() {
     const [bookings, setBookings] = useState([]);

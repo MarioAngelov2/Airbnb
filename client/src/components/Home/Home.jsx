@@ -3,7 +3,10 @@ import * as api from "../../api/requester";
 import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
+const URL_TO_UPLOADS =
+    process.env.NODE_ENV === "development"
+        ? "http://localhost:5001/uploads/"
+        : "https://airbnb-clone-64cu.onrender.com/uploads/";
 
 function Home() {
     const [places, setPlaces] = useState([]);
@@ -13,10 +16,10 @@ function Home() {
         try {
             const response = await api.getPlaces();
             setPlaces(response);
-            setIsLoading(false)
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
-            setIsLoading(false)
+            setIsLoading(false);
         }
     }
 
@@ -44,10 +47,7 @@ function Home() {
                             className="rounded-2xl"
                         >
                             <img
-                                src={
-                                    URL_TO_UPLOADS +
-                                    place.photos[0]
-                                }
+                                src={URL_TO_UPLOADS + place.photos[0]}
                                 className="rounded-2xl object-cover aspect-square"
                                 alt=""
                             />

@@ -8,7 +8,10 @@ import {
 import { RiDeleteBin7Line } from "react-icons/ri";
 import * as api from "../../api/requester";
 
-const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
+const URL_TO_UPLOADS2 =
+    process.env.NODE_ENV === "development"
+        ? "http://localhost:5001/uploads/"
+        : "https://airbnb-clone-64cu.onrender.com/uploads/";
 
 function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
     const [uploadPhotoByLink, setUploadPhotoByLink] = useState("");
@@ -76,7 +79,7 @@ function UploadPhotos({ uploadPhotos, setUploadPhotos }) {
                         <div className="flex relative" key={photo}>
                             <img
                                 className="rounded-2xl aspect-square object-cover"
-                                src={URL_TO_UPLOADS + photo}
+                                src={URL_TO_UPLOADS2 + photo}
                                 alt=""
                             />
                             <button
