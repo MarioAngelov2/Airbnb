@@ -57,7 +57,6 @@ function AddPlaces() {
             !maxGuests &&
             !price;
             
-            console.log(areInputsEmpty)
             setIsEmpty(areInputsEmpty)
     }, [
         title,
