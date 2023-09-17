@@ -13,9 +13,3 @@ const logout = (req, res, next) => {
 };
 
 module.exports = logout;
-
-// res.cookie("token", "", {
-//     expires: new Date(0),
-//     sameSite: "None",
-//     secure: true,
-// });
