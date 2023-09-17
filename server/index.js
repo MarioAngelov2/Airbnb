@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(
         cors({
             credentials: true,
-            origin: "https://airbnb-p16fxq5h6-marioangelov995-gmailcom.vercel.app",
+            origin: "https://airbnb-three-phi.vercel.app",
         })
     );
 }
