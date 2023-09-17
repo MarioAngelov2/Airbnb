@@ -16,6 +16,7 @@ function AddPlaces() {
     const [checkOut, setCheckout] = useState("");
     const [maxGuests, setMaxGuests] = useState("");
     const [price, setPrice] = useState("");
+    const [isEmpty, setIsEmpty] = useState(true);
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -39,8 +40,37 @@ function AddPlaces() {
         if (!id) {
             return;
         }
+
         getPlaceDetails();
     }, [id]);
+
+    useEffect(() => {
+        const areInputsEmpty =
+            !title &&
+            !address &&
+            !uploadPhotos.length &&
+            !description &&
+            !perks &&
+            !extraInfo &&
+            !checkIn &&
+            !checkOut &&
+            !maxGuests &&
+            !price;
+            
+            console.log(areInputsEmpty)
+            setIsEmpty(areInputsEmpty)
+    }, [
+        title,
+        address,
+        uploadPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests,
+        price,
+    ]);
 
     const data = {
         title,
@@ -78,7 +108,7 @@ function AddPlaces() {
 
         try {
             await api.deletePlace(id);
-            navigate('/account/places')
+            navigate("/account/places");
         } catch (error) {
             console.log(error);
         }
@@ -143,7 +173,7 @@ function AddPlaces() {
                     </div>
                     {preInput("Extra Info", "Add extra info for your place")}
                     <textarea
-                    className="h-28"
+                        className="h-28"
                         type="text"
                         placeholder="Add extra info..."
                         value={extraInfo}
@@ -194,6 +224,7 @@ function AddPlaces() {
                     </div>
                     <div className="flex flex-col items-center justify-center gap-2">
                         <button
+                            disabled={isEmpty}
                             onClick={addPlace}
                             className="max-w-md primary mt-10 mb-2"
                         >
