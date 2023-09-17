@@ -19,7 +19,7 @@ app.use("/uploads", express.static(PATH_TO_UPLOADS));
     app.use(
         cors({
             credentials: true,
-            origin: "https://idyllic-creponne-5d30e6.netlify.app/",
+            origin: "https://flourishing-piroshki-46df09.netlify.app",
         })
     );
 
