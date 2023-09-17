@@ -5,7 +5,7 @@ const createUser = require("../controllers/register");
 const loginUser = require("../controllers/login");
 const getUser = require("../controllers/getUser");
 const logout = require("../controllers/logout");
-const uploadByLink = require("../controllers/UploadPhotos/UploadByLink");
+const uploadByLink = require("../controllers/UploadPhotos/uploadByLink");
 const uploadPhotoFromDevice = require("../controllers/UploadPhotos/UploadFromDevice");
 const createPlace = require("../controllers/Places/createPlace");
 const userPlaces = require("../controllers/Places/userPlaces");
@@ -19,10 +19,7 @@ const getBookedPlace = require("../controllers/Booking/getBookedPlace");
 const deleteBooking = require("../controllers/Booking/deleteBooking");
 
 const parentDirectory = path.resolve(__dirname, "../../");
-const PATH_TO_UPLOADS = path.join(
-    parentDirectory,
-    "/assets/uploads/"
-);
+const PATH_TO_UPLOADS = path.join(parentDirectory, "/assets/uploads/");
 
 const photosMiddleware = multer({ dest: PATH_TO_UPLOADS });
 
