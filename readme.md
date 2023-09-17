@@ -26,7 +26,7 @@ Responsive design for both desktop and mobile devices.
 
 `Clone repo`
 
-- Server `cd server` `npm i` `npm start`
+- Server Dev Mode `cd server` `npm i` `npm run start-dev`
 - Client `cd client` `npm i` `npm run dev`
 
 ## Technology Stack
