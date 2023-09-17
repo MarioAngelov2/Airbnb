@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(
         cors({
             credentials: true,
-            origin: "https://airbnb-three-phi.vercel.app",
+            origin: "https://idyllic-creponne-5d30e6.netlify.app/",
         })
     );
 }
