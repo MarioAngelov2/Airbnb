@@ -23,7 +23,6 @@ function Account() {
     }
 
     const onLogout = async () => {
-        console.log("onLogout function called");
         await api.logout();
         setUser(null);
         navigate('/')
