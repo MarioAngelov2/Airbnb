@@ -16,13 +16,16 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(PATH_TO_UPLOADS));
 
+if (process.env.NODE_ENV === "development") {
+    app.use(cors());
+} else {
     app.use(
         cors({
             credentials: true,
-            origin: "https://taupe-concha-294d19.netlify.app",
+            origin: "https://cheery-gumdrop-619967.netlify.app",
         })
     );
-
+}
 
 mongoose
     .connect(process.env.MONGO_CONNECTION_STRING)
