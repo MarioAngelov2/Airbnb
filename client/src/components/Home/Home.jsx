@@ -32,7 +32,7 @@ function Home() {
     }
 
     return (
-        <div className="max-w-global mx-auto mt-14 mb-14">
+        <div className="max-w-global h-screen mx-auto mt-14 mb-14">
             <div className="grid gap-x-5 gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
                 {places.length > 0 &&
                     places.map((place) => (
