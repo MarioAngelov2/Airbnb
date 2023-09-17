@@ -1,4 +1,7 @@
-const URL = "http://127.0.0.1:5001";
+const URL =
+    process.env.NODE_ENV === "development"
+        ? "http://127.0.0.1:5001"
+        : "https://airbnb-clone-64cu.onrender.com";
 
 export async function register(data) {
     try {
@@ -62,7 +65,7 @@ export async function logout() {
 
 export async function uploadPhotoFromLink(data) {
     try {
-        const response = await fetch("http://127.0.0.1:5001/upload-by-link", {
+        const response = await fetch(`${URL}/upload-by-link`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -91,7 +94,7 @@ export async function uploadPhotoFromDevice(data) {
 
 export async function createPlace(data) {
     try {
-        const response = await fetch("http://127.0.0.1:5001/add-place", {
+        const response = await fetch(`${URL}/add-place`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -108,7 +111,7 @@ export async function createPlace(data) {
 
 export async function getUserPlaces() {
     try {
-        const response = await fetch("http://127.0.0.1:5001/user-places", {
+        const response = await fetch(`${URL}/user-places`, {
             method: "GET",
             credentials: "include",
         });
@@ -120,7 +123,7 @@ export async function getUserPlaces() {
 
 export async function getPlace(id) {
     try {
-        const response = await fetch("http://127.0.0.1:5001/place/" + id);
+        const response = await fetch(`${URL}/place/` + id);
         return response;
     } catch (error) {
         console.log(error);

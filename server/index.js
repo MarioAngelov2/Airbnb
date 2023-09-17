@@ -8,22 +8,24 @@ const errorMiddleware = require("./src/middleware/errorHandling");
 const router = require("./src/routes/places");
 const { default: mongoose } = require("mongoose");
 
-const PATH_TO_UPLOADS = path.join(
-    __dirname,
-    "/assets/uploads"
-);
+const PATH_TO_UPLOADS = path.join(__dirname, "/assets/uploads");
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(PATH_TO_UPLOADS));
-app.use(
-    cors({
-        credentials: true,
-        origin: "http://127.0.0.1:5173",
-    })
-);
+
+if (process.env.NODE_ENV === "development") {
+    app.use(cors());
+} else {
+    app.use(
+        cors({
+            credentials: true,
+            origin: "https://airbnb-p16fxq5h6-marioangelov995-gmailcom.vercel.app",
+        })
+    );
+}
 
 mongoose
     .connect(process.env.MONGO_CONNECTION_STRING)
