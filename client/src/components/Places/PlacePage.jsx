@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { CiLocationOn } from "react-icons/ci";
 import { PiDotsNine } from "react-icons/pi";
+import { IoChevronBackOutline } from "react-icons/io5";
 import PlacePageDetails from "./PlacePageDetails";
 
 function PlacePage() {
@@ -36,7 +37,13 @@ function PlacePage() {
         return (
             <div className="max-w-global mx-auto">
                 <div className="absolute inset-0 bg-white min-h-screen flex flex-col gap-4">
-                    <div className="mt-12 mb-12">
+                    <div className="bg-white fixed w-full h-14">
+                        <button onClick={() => setShowAllPhotos(false)} className="bg-white absolute top-3 left-14 hover:bg-gray-100 rounded-full transition ease-in-out duration-200 py-1 px-2">
+                            <IoChevronBackOutline size={30} />
+                        </button>
+                        <h1 className="absolute right-10 top-3 text-xl">{place.title}</h1>
+                    </div>
+                    <div className="mt-16 mb-12">
                         {place.photos.map((photo) => (
                             <div className="flex justify-center px-4 md:px-16">
                                 <img
