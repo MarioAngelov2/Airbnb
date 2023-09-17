@@ -16,16 +16,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(PATH_TO_UPLOADS));
 
-if (process.env.NODE_ENV === "development") {
-    app.use(cors());
-} else {
     app.use(
         cors({
             credentials: true,
             origin: "https://idyllic-creponne-5d30e6.netlify.app/",
         })
     );
-}
+
 
 mongoose
     .connect(process.env.MONGO_CONNECTION_STRING)
