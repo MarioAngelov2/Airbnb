@@ -50,7 +50,7 @@ function PlacePage() {
                     </div>
                     <div className="mt-16 mb-12">
                         {place.photos.map((photo) => (
-                            <div className="flex justify-center px-4 md:px-16">
+                            <div key={photo} className="flex justify-center px-4 md:px-16">
                                 <img
                                     className="mb-8"
                                     key={photo}
