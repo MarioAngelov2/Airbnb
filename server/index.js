@@ -17,7 +17,10 @@ app.use(cookieParser());
 app.use("/uploads", express.static(PATH_TO_UPLOADS));
 
 if (process.env.NODE_ENV === "development") {
-    app.use(cors());
+    app.use(cors({
+        credentials: "true",
+        origin: "http://127.0.0.1:5173"
+    }));
 } else {
     app.use(
         cors({
