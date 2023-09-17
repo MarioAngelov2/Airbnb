@@ -6,6 +6,8 @@ import { CiLocationOn } from "react-icons/ci";
 import { format, differenceInCalendarDays } from "date-fns";
 import { BsMoon, BsCalendarDate } from "react-icons/bs";
 
+const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
+
 function BookedPlace() {
     const [bookedPlace, setBookedPlace] = useState([]);
     const [ready, setReady] = useState(false);
@@ -116,7 +118,7 @@ function BookedPlace() {
                             <img
                                 className="aspect-square object-cover rounded-2xl"
                                 src={
-                                    "http://localhost:5001/uploads/" +
+                                    URL_TO_UPLOADS +
                                     bookedPlace.place.photos?.[0]
                                 }
                                 alt=""
@@ -131,7 +133,7 @@ function BookedPlace() {
                                 <img
                                     className="aspect-square object-cover rounded-2xl"
                                     src={
-                                        "http://localhost:5001/uploads/" +
+                                        URL_TO_UPLOADS +
                                         bookedPlace.place.photos?.[1]
                                     }
                                     alt=""
@@ -145,7 +147,7 @@ function BookedPlace() {
                                 <img
                                     className="aspect-square object-cover rounded-2xl relative bottom-2 "
                                     src={
-                                        "http://localhost:5001/uploads/" +
+                                        URL_TO_UPLOADS +
                                         bookedPlace.place.photos?.[2]
                                     }
                                     alt=""

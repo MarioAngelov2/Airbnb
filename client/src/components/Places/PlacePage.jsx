@@ -7,6 +7,8 @@ import { PiDotsNine } from "react-icons/pi";
 import { IoChevronBackOutline } from "react-icons/io5";
 import PlacePageDetails from "./PlacePageDetails";
 
+const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
+
 function PlacePage() {
     const [place, setPlace] = useState([]);
     const [ready, setReady] = useState(false);
@@ -50,7 +52,7 @@ function PlacePage() {
                                     className="mb-8"
                                     key={photo}
                                     src={
-                                        "http://localhost:5001/uploads/" + photo
+                                        URL_TO_UPLOADS + photo
                                     }
                                     alt=""
                                 />
@@ -89,7 +91,7 @@ function PlacePage() {
                                 <img
                                     className="aspect-square object-cover rounded-2xl"
                                     src={
-                                        "http://localhost:5001/uploads/" +
+                                        URL_TO_UPLOADS +
                                         place.photos[0]
                                     }
                                     alt=""
@@ -104,7 +106,7 @@ function PlacePage() {
                                     <img
                                         className="aspect-square object-cover rounded-2xl"
                                         src={
-                                            "http://localhost:5001/uploads/" +
+                                            URL_TO_UPLOADS +
                                             place.photos[1]
                                         }
                                     />
@@ -117,7 +119,7 @@ function PlacePage() {
                                     <img
                                         className="aspect-square object-cover relative bottom-2 rounded-2xl"
                                         src={
-                                            "http://localhost:5001/uploads/" +
+                                            URL_TO_UPLOADS +
                                             place.photos[2]
                                         }
                                     />

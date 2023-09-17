@@ -8,6 +8,8 @@ import { RiDeleteBin7Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
+const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
+
 function BookingPlces() {
     const [bookings, setBookings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -78,7 +80,7 @@ function BookingPlces() {
                                         <img
                                             className="rounded-tl-2xl md:aspect-square md:w-[240px] lg:w-[280px] rounded-tr-2xl md:rounded-tr-none md:rounded-bl-2xl md:rounded-tl-2xl"
                                             src={
-                                                "http://localhost:5001/uploads/" +
+                                                URL_TO_UPLOADS +
                                                 place.place?.photos?.[0]
                                             }
                                             alt=""

@@ -3,6 +3,7 @@ import AccountNav from "../Account/AccountNav";
 import { Link } from "react-router-dom";
 import * as api from "../../api/requester";
 
+const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
 
 function Places() {
     const [places, setPlaces] = useState([]);
@@ -43,7 +44,7 @@ function Places() {
                                 <img
                                     className="object-fill aspect-auto max-h-[320px] md:aspect-square md:w-64"
                                     src={
-                                        "http://localhost:5001/uploads/" +
+                                        URL_TO_UPLOADS +
                                         place.photos[0]
                                     }
                                     alt=""

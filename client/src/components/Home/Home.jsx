@@ -3,6 +3,8 @@ import * as api from "../../api/requester";
 import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
+const URL_TO_UPLOADS = "https://airbnb-clone-64cu.onrender.com/uploads/"
+
 function Home() {
     const [places, setPlaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +45,7 @@ function Home() {
                         >
                             <img
                                 src={
-                                    "http://localhost:5001/uploads/" +
+                                    URL_TO_UPLOADS +
                                     place.photos[0]
                                 }
                                 className="rounded-2xl object-cover aspect-square"
