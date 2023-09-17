@@ -6,11 +6,9 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import UserPlaces from "./components/Places/UserPlaces";
 import AddPlaces from "./components/AddPlaces/AddPlaces";
-
 import UserContextProvider from "./context/userContext";
 import Home from "./components/Home/Home";
 import PlacePage from "./components/Places/PlacePage";
-import Footer from "./components/Footer/Footer";
 import BookingPlces from "./components/Booking/BookingPlces";
 import BookedPlace from "./components/Booking/BookedPlace";
 
