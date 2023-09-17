@@ -1,6 +1,6 @@
 const imageDownloader = require("image-downloader");
 const path = require("path");
-const parentDirectory = path.resolve(__dirname, "../../../");
+const parentDirectory = path.resolve(__dirname, "../../");
 const PATH_TO_UPLOADS = path.join(parentDirectory, "/assets/uploads/");
 
 const uploadByLink = async (req, res, next) => {
