@@ -1,4 +1,8 @@
 const imageDownloader = require("image-downloader");
+const path = require("path");
+const parentDirectory = path.resolve(__dirname, "../../../");
+const PATH_TO_UPLOADS = path.join(parentDirectory, "/assets/uploads/");
+console.log(PATH_TO_UPLOADS)
 
 const uploadByLink = async (req, res, next) => {
     try {
@@ -12,7 +16,7 @@ const uploadByLink = async (req, res, next) => {
 
         await imageDownloader.image({
             url: link,
-            dest: __dirname + "../../assets/uploads/" + newName,
+            dest: PATH_TO_UPLOADS + newName,
         });
         res.json(newName);
     } catch (error) {
